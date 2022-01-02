@@ -21,6 +21,8 @@ INC  = include
 # Recipes
 all: dropintest sharedtest statictest
 
+install: install_shared install_static
+
 install_shared: shared
 	@cp $(BIN)/shared/libclogger.so /usr/local/lib
 	@ldconfig

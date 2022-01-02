@@ -12,12 +12,18 @@ To set up using the drag-n-drop approach, simply add `clogger.h` and `clogger.c`
 header and source files reside, respectively. There are currently no external dependencies
 besides `libc`, so the translation unit will be able to compile standalone.
 
-### Static Library
+### Libraries
+
+This project can be set up as a static or shared library. A convenience target (`make install`,
+which must be run with sudo privileges), has been provided to install both the static and
+shared libraries to the specified target folder (currently `/user/local/lib`).
+
+#### Static Library
 To set up using the static library approach, use `make static` to generate a static library in
 `bin/static` or `make install_static` to generate the static library and install it in
 `/usr/local/lib` as `libclogger-static.a`.
 
-### Shared Library
+#### Shared Library
 To set up using the shared library approach, use `make shared` to generate a shared library in
 `bin/shared` or `make install_shared` to generate the shared library and install it in
 `/usr/local/lib` as `libclogger.so`.
