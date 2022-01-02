@@ -7,6 +7,21 @@ My personal and minimal implementation of a logging module, written in C.
 This module, once completed, will be able to be set up for use via a drag-n-drop approach, a static
 library, and a shared library.
 
+### Drag-n-Drop
+To set up using the drag-n-drop approach, simply add `clogger.h` and `clogger.c` wherever your
+header and source files reside, respectively. There are currently no external dependencies
+besides `libc`, so the translation unit will be able to compile standalone.
+
+### Static Library
+To set up using the static library approach, use `make static` to generate a static library in
+`bin/static` or `make install_static` to generate the static library and install it in
+`/usr/local/lib` as `libclogger-static.a`.
+
+### Shared Library
+To set up using the shared library approach, use `make shared` to generate a shared library in
+`bin/shared` or `make install_shared` to generate the shared library and install it in
+`/usr/local/lib` as `libclogger.so`.
+
 ## Usage
 
 This library currently provides four levels at which messages can be logged:

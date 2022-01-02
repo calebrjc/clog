@@ -1,12 +1,12 @@
-// File: logger.c
+// File: clogger.c
 // Author(s): Caleb Johnson-Cantrell
 
-#include "include/clogger.h"
+#include "clogger.h"
 
 #include <stdarg.h>
 #include <stdbool.h>
-#include <stdio.h>
 #include <string.h>
+#include <stdio.h>
 
 // The current file being logged to
 static FILE *log_file = NULL;
@@ -32,16 +32,11 @@ void clogger_log(LogLevel level, const char *format, ...) {
     if (level < current_level) return;
 
     // Determine the file stream that this message should be printed to
-    FILE *fp;
-    if (log_file) {
-        fp = log_file;
-    } else {
-        fp = stdout;
-    }
+    FILE *fp = (log_file) ? log_file : stdout;
 
     // If the message requires a header, add it
     if (strlen(LOG_HEADERS[level]) > 0) {
-        fprintf(fp, "[%s] ", LOG_HEADERS[level]);
+        fprintf(fp, "[%s] ", LOG_HEADERS[level]);   
     }
 
     // Print this message to the specified file stream
