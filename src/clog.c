@@ -10,11 +10,11 @@ static LogLevel current_level = CLOG_LOGLEVEL_NONE;
 
 // Message headers
 char *LOG_HEADERS[] = {
-    "",            // LogLevel.LOGGER_LOGLEVEL_NONE
-    "[DEBUG] ",    // LogLevel.LOGGER_LOGLEVEL_DEBUG
-    "[VERBOSE] ",  // LogLevel.LOGGER_LOGLEVEL_VERBOSE
-    "[INFO] ",     // LogLevel.LOGGER_LOGLEVEL_INFO
-    "[ERROR] ",    // LogLevel.LOGGER_LOGLEVEL_ERROR
+    "",            // LogLevel.CLOG_LOGLEVEL_NONE
+    "[DEBUG] ",    // LogLevel.CLOG_LOGLEVEL_DEBUG
+    "[VERBOSE] ",  // LogLevel.CLOG_LOGLEVEL_VERBOSE
+    "[INFO] ",     // LogLevel.CLOG_LOGLEVEL_INFO
+    "[ERROR] ",    // LogLevel.CLOG_LOGLEVEL_ERROR
 };
 
 void clog_init(FILE *file, LogLevel level) {

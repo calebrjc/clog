@@ -1,5 +1,5 @@
-#ifndef CALEBRJC_CLOGGER_CLOGGER_H_
-#define CALEBRJC_CLOGGER_CLOGGER_H_
+#ifndef CALEBRJC_CLOG_CLOG_H_
+#define CALEBRJC_CLOG_CLOG_H_
 
 #include <stdio.h>
 
@@ -33,4 +33,4 @@ void clog_log(LogLevel level, const char *format, ...);
 // Equivalent to `clog_log(CLOG_LOGLEVEL_ERROR, format, ...)`
 #define clog_error(...) clog_log(CLOG_LOGLEVEL_ERROR, __VA_ARGS__)
 
-#endif  // CALEBRJC_CLOGGER_CLOGGER_H_
+#endif  // CALEBRJC_CLOG_CLOG_H_
