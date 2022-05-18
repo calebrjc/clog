@@ -1,11 +1,11 @@
-#include "clogger.h"
+#include "clog.h"
 
 #include <stdio.h>
 
 int main(int argc, char *argv[]) {
-    clogger_init(NULL, LOGLEVEL_DEBUG);
-    clogger_debug("I'm trying\n");
-    clogger_info("Trying again\n");
-    clogger_verbose("One more time\n");
-    clogger_error("Error!\n");
+    clog_init(NULL, CLOG_LOGLEVEL_INFO);
+    clog_debug("I'm trying\n");
+    clog_verbose("One more time\n");
+    clog_info("Trying again\n");
+    clog_error("Error!\n");
 }

@@ -1,6 +1,3 @@
-# File: Makefile
-# Author(s): Caleb Johnson-Cantrell
-
 # Tool and option aliases
 CC         = gcc
 CFLAGS     = -Wall --pedantic-errors -g -I$(INC)
@@ -18,7 +15,7 @@ OBJ  = obj
 BIN  = bin
 INC  = include
 
-# Recipes
+# Rules
 all: dropintest sharedtest statictest
 
 install: install_shared install_static
@@ -35,21 +32,21 @@ shared: libclogger.so
 
 static: libclogger-static.a
 
-dropintest: $(TEST)/library_test.c $(OBJ)/clogger.o | $(BIN)/tests
+dropintest: $(TEST)/library_test.c $(OBJ)/clog.o | $(BIN)/tests
 	$(CC) $(CFLAGS) -o $(BIN)/tests/$@ $^
 
-sharedtest: $(TEST)/library_test.c libclogger.so | $(BIN)/tests
-	$(CC) $(CFLAGS) -o $(BIN)/tests/$@ $< -L$(BIN)/shared -lclogger
+sharedtest: $(TEST)/library_test.c libclog.so | $(BIN)/tests
+	$(CC) $(CFLAGS) -o $(BIN)/tests/$@ $< -L$(BIN)/shared -lclog
 
-statictest: $(TEST)/library_test.c libclogger-static.a | $(BIN)/tests
-	$(CC) $(CFLAGS) -o $(BIN)/tests/$@ $< -L$(BIN)/static -lclogger-static
+statictest: $(TEST)/library_test.c libclog-static.a | $(BIN)/tests
+	$(CC) $(CFLAGS) -o $(BIN)/tests/$@ $< -L$(BIN)/static -lclog-static
 
-libclogger.so: CFLAGS += -fPIC
-libclogger.so: $(SRC)/clogger.c $(INC)/clogger.h | $(BIN)/shared
+libclog.so: CFLAGS += -fPIC
+libclog.so: $(SRC)/clog.c $(INC)/clog.h | $(BIN)/shared
 	$(CC) $(CFLAGS) -shared -o $(BIN)/shared/$@ $< -lc
 
-libclogger-static.a: $(OBJ)/clogger.o | $(BIN)/static
-	$(AR) $(ARFLAGS) $(BIN)/static/$@ $(OBJ)/clogger.o
+libclog-static.a: $(OBJ)/clog.o | $(BIN)/static
+	$(AR) $(ARFLAGS) $(BIN)/static/$@ $(OBJ)/clog.o
 
 $(OBJ)/%.o: $(SRC)/%.c $(INC)/%.h | $(OBJ)
 	$(CC) $(CFLAGS) -o $@ -c $<
